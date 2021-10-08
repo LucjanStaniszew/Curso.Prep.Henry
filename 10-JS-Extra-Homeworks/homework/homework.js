@@ -9,15 +9,29 @@ function deObjetoAmatriz(objeto){
       B: 2,
       C: 3
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
-  //Escribe tu código aquí
-}
+  //Escribe tu código aquí:
+  let mat = [];
+  for (let key in objeto) {
+    mat.push([key, objeto[key]])
+    } 
+    return mat;
+  }
+
 
 
 function numberOfCharacters(string) {
-  //La función recibe un string. Recorre el srting y devuelve el caracter con el número de veces que aparece 
+  //La función recibe un string. Recorre el string y devuelve el caracter con el número de veces que aparece 
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
+  var caracteres = {}
+  for (var i = 0; i < string.length; i++) {
+    if (Object.keys(caracteres).includes(string[i])) {
+      caracteres[string[i]] = caracteres[string[i]] +1;
+    } else {
+      caracteres[string[i]] = 1;
+    }
+  } return caracteres;
 }
 
 
@@ -25,16 +39,30 @@ function capToFront(s) {
   //Realiza una función que reciba como parámetro un string y mueva todas las letras mayúsculas
   //al principio de la palabra.
   //Ejemplo: soyHENRY -> HENRYsoy
-  //Escribe tu código aquí
+  //Escribe tu código aquí:
+  var mayus = '';
+  var minus = '';
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === s[i].toUpperCase()) {
+      mayus += s[i];
+    } else {
+      minus += s[i];
+    }
+  } return mayus + minus;
 }
 
 
 function asAmirror(str) {
   //La función recibe una frase. 
-  //Escribe una función que tome la frase recibida y la devuelva de modo tal que se pueda leer de izquierda a derecha 
-  //pero con cada una de sus palabras invertidas, como si fuera un espejo.
+  //Escribe una función que tome la frase recibida y la devuelva de modo tal que se pueda leer de izquierda 
+  //a derecha pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
+  //split
+  var espejo = str.split(' ').map(function (words) {
+    return words.split('').reverse().join('')
+  } ).join(' ');
+  return espejo
 } 
 
 
@@ -43,21 +71,42 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
+  // si -- mi numero -- paso string -- lo separo -- lo mappeo -- lo doy vuelta -- lo vuelvo a unir
+  // este es igual a mi numero -- que me retorne "Es capicua" -- sino que me retorne "No es capicua"
+  var num = numero.toString();
+  var nuevoNumero = num.split('').reverse().join('');
+  if (num === nuevoNumero) {
+    return "Es capicua";
+  } else
+  return "No es capicua";
 }
 
 
 function deleteAbc(cadena){
   //Define una función que elimine las letras "a", "b" y "c" de la cadena dada 
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
-  //Escribe tu código aquí
-}
+  //Escribe tu código aquí:
+  var nuevacadena = ''
+  for (let i = 0; i < cadena.length; i++) {
+    if (cadena[i] != 'a' && cadena[i] != 'b' && cadena[i] != 'c') {
+      nuevacadena += cadena[i]
+    }  
+  } return nuevacadena
+} 
 
 
 function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
-  //Escribe tu código aquí
-}
+  //Escribe tu código aquí:
+  var arrsorted = []
+  for (let i = 0; i < arr.length; i++) {
+    arrsorted.push(arr[i])
+    } arrsorted.sort(function (a, b) {
+      return a.length - b.length;
+    }) 
+  return arrsorted
+} 
 
 
 function buscoInterseccion(arreglo1, arreglo2){
@@ -65,7 +114,14 @@ function buscoInterseccion(arreglo1, arreglo2){
   //retornar un nuevo array con la intersección de ambos elementos. (Ej: [4,2,3] unión [1,3,4] = [3,4].
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
-  //Escribe tu código aquí  
+  //Escribe tu código aquí:
+  var numerosEnComun = []
+  for (let i = 0; i < arreglo1.length; i++) {
+    for (let j = 0; j < arreglo2.length; j++){
+      if (arreglo1[i] == arreglo2[j])
+    numerosEnComun.push(arreglo1[i])
+    }
+  } return numerosEnComun;  
 }
 
 
